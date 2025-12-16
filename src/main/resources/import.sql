@@ -1,0 +1,24 @@
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Luiz Henrique Santos Dias','luizhenriquemc15@gmail.com', '31999990001','Engenharia de Computação','20233004280', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Marcela Freitas Mariano','marcelafmariano@gmail.com', '31999990002','Engenharia de Computação','20233003980', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Mariana Luciano Moraes','marianamoraes645@gmail.com','31999990003','Engenharia de Computação','20233007710', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Fernanda Laylla Almeida','fernandalayllaalmeida22@gmail.com','31999990004','Engenharia de Computação','20233008299', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Matheus Mechetti Lulli','mechettimatheus@gmail.com','31999990005','Engenharia de Computação','20233004057', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Pedro Henrique Martins Camargo','pedro.camargo@gmail.com','31999990006','Engenharia de Computação','20233004058', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Daiana Maria de Oliveira','daiana_vieira99@hotmail.com','31999990007','Engenharia de Computação','20233004182', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Bruno Durso Amaral','brunodursoamaral2@hotmail.com','31999990008','Engenharia de Computação','20233008664', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Gabrielle Coimbra Batista','coigabrielleb@gmail.com','31999990009','Engenharia de Computação','20233004093', true, 0);
+INSERT INTO tb_estudante(nome, email, telefone, curso, matricula, ativo, qtd_emprestimos_ativos) VALUES ('Maria Sofia Freitas de Souza','freitasmsofia@gmail.com','31999990000','Engenharia de Computação','20233004001', true, 0);
+
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('Crepúsculo','Stephenie Meyer','Intrínseca',2005,'9788598078355', 'Romance', 3, 3, '2025-12-09', true);
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('Lua Nova','Stephenie Meyer','Intrínseca',2006,'9788598078539', 'Romance', 3, 3, '2025-12-09', true);
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('Eclipse','Stephenie Meyer','Intrínseca',2007,'9788598078737', 'Romance', 3, 3, '2025-12-09', true);
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('Harry Potter e a Pedra Filosofal','J.K. Rowling','Rocco',1997,'9788532511010', 'Fantasia', 3, 3, '2025-12-09', true);
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('Dom Casmurro','Machado de Assis','Principis',1899,'9788594318608', 'Romance', 3, 3, '2025-12-09', true);
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('O Pequeno Príncipe','Antoine de Saint-Exupéry','HarperCollins',1943,'9788595081518', 'Fábula', 3, 3, '2025-12-09', true);
+INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('1984','George Orwell','Companhia das Letras',1949,'9788535914849', 'Distopia', 3, 3, '2025-12-09', true);
+
+INSERT INTO tb_petiano(data_entrada, id_estudante, tipo, login, senha, nivel_acesso) VALUES ('2025-05-10', 1, 'BOLSISTA', '105.556.206-03', '$2a$10$7SNRssJyBaix8o/DIxEgieV7.v6HByuVyh1U1Tfdm8o6XTuyEq97C', 'ADMIN');
+INSERT INTO tb_petiano(data_entrada, id_estudante, tipo, login, senha, nivel_acesso) VALUES ('2025-05-10', 5, 'BOLSISTA', 'matheus', '$2a$10$7SNRssJyBaix8o/DIxEgieV7.v6HByuVyh1U1Tfdm8o6XTuyEq97C', 'PETIANO');
+
+INSERT INTO tb_emprestimo(livro_id, petiano_id, estudante_id, data_entrada, prazo_maximo, data_devolucao) VALUES (4, 1, 2, '2025-09-12', '2025-12-12', '2025-12-08');
+INSERT INTO tb_emprestimo(livro_id, petiano_id, estudante_id, data_entrada, prazo_maximo, data_devolucao) VALUES (6, 2, 10, '2025-09-10', '2025-11-05', '2025-11-01');
