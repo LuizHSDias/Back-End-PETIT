@@ -41,6 +41,7 @@ public class LivroService {
         livro.setEditora(dto.getEditora());
         livro.setAno(dto.getAno());
         livro.setIsbn(dto.getIsbn());
+        livro.setGenero(dto.getGenero());
         Livro salvo = livroRepository.save(livro);
         return new LivroDTO(salvo);
     }
@@ -54,6 +55,7 @@ public class LivroService {
         livro.setEditora(dto.getEditora());
         livro.setAno(dto.getAno());
         livro.setIsbn(dto.getIsbn());
+        livro.setGenero(dto.getGenero());
         Livro atualizado = livroRepository.save(livro);
         return new LivroDTO(atualizado);
     }

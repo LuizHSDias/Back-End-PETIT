@@ -78,9 +78,9 @@ public class SecurityConfig {
                 // Regras de Autorização para PETIANOS
                 .requestMatchers(HttpMethod.GET, "/petianos").hasAnyRole("ADMIN", "PETIT")
                 .requestMatchers(HttpMethod.GET, "/petianos/{id}").hasAnyRole("ADMIN", "PETIT")
-                .requestMatchers(HttpMethod.POST, "/petianos").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/petianos/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/petianos/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/petianos").hasAnyRole("ADMIN", "PETIT")
+                .requestMatchers(HttpMethod.PUT, "/petianos/**").hasAnyRole("ADMIN", "PETIT")
+                .requestMatchers(HttpMethod.DELETE, "/petianos/**").hasAnyRole("ADMIN", "PETIT")
 
                 // Todos os outros endpoints exigem autenticação
                 .anyRequest().authenticated()

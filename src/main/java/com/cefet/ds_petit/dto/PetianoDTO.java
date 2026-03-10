@@ -12,7 +12,7 @@ public class PetianoDTO {
     private Long id;
     private LocalDate dataEntrada;
     private Estudante estudante;
-    private TipoPetiano tipoPetiano;
+    private TipoPetiano tipo;
     private String login;
     // Impede que a Senha seja exposta
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -28,7 +28,7 @@ public class PetianoDTO {
         this.id = petiano.getId();
         this.dataEntrada = petiano.getDataEntrada();
         this.estudante = petiano.getEstudante();
-        this.tipoPetiano = petiano.getTipo();
+        this.tipo = petiano.getTipo();
         this.login = petiano.getLogin();
         this.senha = petiano.getSenha();
         this.nivelAcesso = petiano.getNivelAcesso();
@@ -48,8 +48,8 @@ public class PetianoDTO {
         return estudante;
     }
 
-    public TipoPetiano getTipoPetiano() {
-        return tipoPetiano;
+    public TipoPetiano getTipo() {
+        return tipo;
     }
 
     public String getLogin(){

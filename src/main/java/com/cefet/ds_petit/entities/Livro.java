@@ -4,10 +4,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
-import jakarta.persistence.CascadeType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -63,7 +64,8 @@ public class Livro {
     @Column(name = "ativo", nullable = false)
     private Boolean ativo = true;
 
-    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "livro")
+    @JsonIgnore
     private List<Emprestimo> emprestimos = new ArrayList<>();
 
     // CONSTRUTORES
@@ -72,13 +74,14 @@ public class Livro {
 
     }
 
-    public Livro(Long id, String titulo, String autor, String editora, Integer ano, String isbn) {
+    public Livro(Long id, String titulo, String autor, String editora, Integer ano, String isbn, String genero) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.ano = ano;
         this.isbn = isbn;
+        this.genero = genero;
     }
 
     // GETTERS E SETTERS
@@ -292,7 +295,4 @@ public class Livro {
             return false;
         return true;
     }
-
-    
-
 }

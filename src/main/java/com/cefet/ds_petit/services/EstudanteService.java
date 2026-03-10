@@ -65,6 +65,7 @@ public class EstudanteService {
         Estudante estudante = new Estudante();
         estudante.setNome(dto.getNome());
         estudante.setEmail(dto.getEmail());
+        estudante.setTelefone(dto.getTelefone());
         estudante.setCurso(dto.getCurso());
         estudante.setMatricula(dto.getMatricula());
 
@@ -84,6 +85,7 @@ public class EstudanteService {
         
         estudante.setNome(dto.getNome());
         estudante.setEmail(dto.getEmail());
+        estudante.setTelefone(dto.getTelefone());
         estudante.setCurso(dto.getCurso());
         estudante.setMatricula(dto.getMatricula());
 

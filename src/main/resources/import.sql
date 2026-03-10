@@ -18,7 +18,7 @@ INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total
 INSERT INTO tb_livro(titulo, autor, editora, ano, isbn, genero, quantidade_total, quantidade_disponivel, data_cadastro, ativo) VALUES ('1984','George Orwell','Companhia das Letras',1949,'9788535914849', 'Distopia', 3, 3, '2025-12-09', true);
 
 INSERT INTO tb_petiano(data_entrada, id_estudante, tipo, login, senha, nivel_acesso) VALUES ('2025-05-10', 1, 'BOLSISTA', '105.556.206-03', '$2a$10$7SNRssJyBaix8o/DIxEgieV7.v6HByuVyh1U1Tfdm8o6XTuyEq97C', 'ADMIN');
-INSERT INTO tb_petiano(data_entrada, id_estudante, tipo, login, senha, nivel_acesso) VALUES ('2025-05-10', 5, 'BOLSISTA', 'matheus', '$2a$10$7SNRssJyBaix8o/DIxEgieV7.v6HByuVyh1U1Tfdm8o6XTuyEq97C', 'PETIANO');
+INSERT INTO tb_petiano(data_entrada, id_estudante, tipo, login, senha, nivel_acesso) VALUES ('2025-05-10', 5, 'BOLSISTA', '123.456.789-01', '$2a$10$7SNRssJyBaix8o/DIxEgieV7.v6HByuVyh1U1Tfdm8o6XTuyEq97C', 'PETIANO');
 
 INSERT INTO tb_emprestimo(livro_id, petiano_id, estudante_id, data_entrada, prazo_maximo, data_devolucao) VALUES (4, 1, 2, '2025-09-12', '2025-12-12', '2025-12-08');
 INSERT INTO tb_emprestimo(livro_id, petiano_id, estudante_id, data_entrada, prazo_maximo, data_devolucao) VALUES (6, 2, 10, '2025-09-10', '2025-11-05', '2025-11-01');

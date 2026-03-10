@@ -7,14 +7,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tb_emprestimo")
@@ -24,29 +22,41 @@ public class Emprestimo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
+    // ======================
+    // RELACIONAMENTOS
+    // ======================
+
+    @ManyToOne
     @JoinColumn(name = "livro_id", nullable = false)
     private Livro livro;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "petiano_id", nullable = false)
     private Petiano petiano;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "estudante_id", nullable = false)
     private Estudante estudante;
 
-    @NotNull
-    @Column(name = "data_entrada", nullable = false)
-    private LocalDate dataEmprestimo; 
+    // ======================
+    // DATAS
+    // ======================
 
-    @NotNull
+    /** Data em que o empréstimo foi realizado */
+    @Column(name = "data_entrada", nullable = false)
+    private LocalDate dataEmprestimo;
+
+    /** Data limite para devolução */
     @Column(name = "prazo_maximo", nullable = false)
     private LocalDate prazoMaximo;
 
+    /** Data real da devolução */
     @Column(name = "data_devolucao")
     private LocalDate dataDevolucao;
+
+    // ======================
+    // STATUS E OBSERVAÇÕES
+    // ======================
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
@@ -57,15 +67,22 @@ public class Emprestimo {
 
     @Column(name = "multa", precision = 10, scale = 2)
     private BigDecimal multa = BigDecimal.ZERO;
-    
-    // CONSTRUTORES 
+
+    // ======================
+    // CONSTRUTORES
+    // ======================
 
     public Emprestimo() {
-
     }
 
-    public Emprestimo(Livro livro, Petiano petiano, Estudante estudante, LocalDate dataEmprestimo, LocalDate prazoMaximo, String observacoes) {
-       
+    public Emprestimo(
+            Livro livro,
+            Petiano petiano,
+            Estudante estudante,
+            LocalDate dataEmprestimo,
+            LocalDate prazoMaximo,
+            String observacoes) {
+
         this.livro = livro;
         this.petiano = petiano;
         this.estudante = estudante;
@@ -76,14 +93,12 @@ public class Emprestimo {
         this.multa = BigDecimal.ZERO;
     }
 
+    // ======================
     // GETTERS E SETTERS
+    // ======================
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Livro getLivro() {
@@ -158,22 +173,32 @@ public class Emprestimo {
         this.multa = multa;
     }
 
-    // MÉTODOS AUXILIARES 
-    public boolean isAtrasado(){
-        return status == StatusEmprestimo.ATIVO && LocalDate.now().isAfter(prazoMaximo);
+    // ======================
+    // MÉTODOS AUXILIARES
+    // ======================
+
+    /** Verifica se o empréstimo está atrasado */
+    public boolean isAtrasado() {
+        return status == StatusEmprestimo.ATIVO
+                && LocalDate.now().isAfter(prazoMaximo);
     }
 
+    /** Realiza a devolução do livro */
     public void devolver() {
-    //  this.dataDevolucao = LocalDateTime.now();
+        this.dataDevolucao = LocalDate.now();
         this.status = StatusEmprestimo.DEVOLVIDO;
-    //  this.livro = incrementarDisponivel();
     }
 
+    /** Marca automaticamente como atrasado */
     public void marcarComoAtrasado() {
-        if(status == StatusEmprestimo.ATIVO && isAtrasado()){
+        if (isAtrasado()) {
             this.status = StatusEmprestimo.ATRASADO;
         }
     }
+
+    // ======================
+    // equals e hashCode
+    // ======================
 
     @Override
     public int hashCode() {
@@ -186,5 +211,4 @@ public class Emprestimo {
         if (!(obj instanceof Emprestimo other)) return false;
         return id != null && id.equals(other.id);
     }
-
 }

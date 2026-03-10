@@ -1,7 +1,6 @@
 package com.cefet.ds_petit.entities;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -188,6 +187,4 @@ public class Petiano {
             return false;
         return true;
     }  
-    
-    
 }

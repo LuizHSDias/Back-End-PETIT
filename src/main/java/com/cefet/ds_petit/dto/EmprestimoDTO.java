@@ -2,7 +2,6 @@ package com.cefet.ds_petit.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
 import com.cefet.ds_petit.entities.Emprestimo;
 import com.cefet.ds_petit.entities.Estudante;
 import com.cefet.ds_petit.entities.Livro;

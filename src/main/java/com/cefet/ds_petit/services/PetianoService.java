@@ -46,7 +46,7 @@ public class PetianoService {
         petiano.setLogin(dto.getLogin());
         petiano.setDataEntrada(dto.getDataEntrada());
         petiano.setEstudante(dto.getEstudante());
-        petiano.setTipo(dto.getTipoPetiano());
+        petiano.setTipo(dto.getTipo());
         petiano.setSenha(passwordEncoder.encode(dto.getSenha()));
         petiano.setNivelAcesso(dto.getNivelAcesso());
         petiano.setUrlImagem(dto.getUrlImagem());
