@@ -79,6 +79,4 @@ public class LivroDTO {
         return ativo;
     }
 
-    
-
 }

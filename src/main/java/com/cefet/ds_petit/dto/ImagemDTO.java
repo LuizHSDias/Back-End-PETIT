@@ -24,7 +24,7 @@ public class ImagemDTO {
     }
 
     public String getUrlImagem() {
-		return "https://ds-guia12.onrender.com/imagens/" + nome;
+		return "http://localhost:8080/imagens/" + nome;
 	}
 
 }

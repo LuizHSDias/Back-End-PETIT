@@ -29,9 +29,5 @@ public class EmprestimoVencimentoDTO {
     public LocalDate getPrazoMaximo() {
         return prazoMaximo;
     } 
-
-    
-
-    
     
 }

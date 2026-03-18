@@ -27,8 +27,6 @@ public class EstudanteDTO {
         this.quantidadeEmprestimosAtivos = estudante.getQuantidadeEmprestimosAtivos();
     }
 
-    // Getters e Setters
-
     public Long getId(){
         return id;
     }
