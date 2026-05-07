@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.cefet.ds_petit.dto.LivroDTO;
 import com.cefet.ds_petit.entities.Livro;
 import com.cefet.ds_petit.repositories.LivroRepository;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class LivroService {
@@ -17,24 +19,31 @@ public class LivroService {
     @Autowired
     private LivroRepository livroRepository;
 
-    public LivroService(){
+    public LivroService() {
 
     }
 
     // Listar
-    public List<LivroDTO> findAll(){
-        List<Livro> lista = livroRepository.findAll();
-        return lista.stream().map(LivroDTO::new).toList();
+    public List<LivroDTO> findAll() {
+        Page<Livro> page = livroRepository.findByAtivoTrue(Pageable.unpaged());
+        return page.getContent().stream().map(LivroDTO::new).toList();
     }
 
     // Buscar ID
-    public LivroDTO findById(Long id){
-        Livro livro = livroRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Livro não encontrado com ID: " + id));
+    public LivroDTO findById(Long id) {
+        Livro livro = livroRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Livro não encontrado com ID: " + id));
         return new LivroDTO(livro);
     }
 
-    // Inserir 
-    public LivroDTO insert(LivroDTO dto){
+    @Transactional(readOnly = true)
+    public Page<LivroDTO> findByTitulo(String titulo, Pageable pageable) {
+        Page<Livro> page = livroRepository.findByTituloContainingIgnoreCaseAndAtivoTrue(titulo, pageable);
+        return page.map(LivroDTO::new);
+    }
+
+    // Inserir
+    public LivroDTO insert(LivroDTO dto) {
         Livro livro = new Livro();
         livro.setTitulo(dto.getTitulo());
         livro.setAutor(dto.getAutor());
@@ -47,8 +56,9 @@ public class LivroService {
     }
 
     // Atualizar
-    public LivroDTO update(Long id, LivroDTO dto){
-        Livro livro = livroRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Livro não encontrado com ID: " + id));
+    public LivroDTO update(Long id, LivroDTO dto) {
+        Livro livro = livroRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Livro não encontrado com ID: " + id));
 
         livro.setTitulo(dto.getTitulo());
         livro.setAutor(dto.getAutor());
@@ -61,8 +71,8 @@ public class LivroService {
     }
 
     // Remover ID
-    public void delete(Long id){
-        if(!livroRepository.existsById(id)){
+    public void delete(Long id) {
+        if (!livroRepository.existsById(id)) {
             throw new EntityNotFoundException("Livro não encontrado com ID: " + id);
         }
         livroRepository.deleteById(id);
